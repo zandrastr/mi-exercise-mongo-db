@@ -17,6 +17,11 @@ MongoClient.connect("mongodb://127.0.0.1:27017", {
 })
 .then(client => {
     console.log("Connection to database ok!")
+
+    //app.locals is a way to store application-level variables.
+    //db can be accessed throughout the app, allowing different parts of the app to interact with the same database instance.
+    const db = client.db("usersbook");
+    app.locals.db = db;
 });
 
 app.use(logger('dev'));
